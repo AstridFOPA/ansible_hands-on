@@ -5,5 +5,8 @@
 [db_servers]
 192.168.50.12
 
-[file_server]
+[file_servers]
 192.168.50.16
+
+[workstations]
+192.168.50.11
