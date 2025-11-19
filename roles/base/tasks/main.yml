@@ -1,0 +1,9 @@
+    - name: add ssh key  for simone
+      authorized_key:
+        user: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGfbLZ3tWyx7lp/Io4YbjifqPhKjpQNqc5H+9BXtqa/d jay default"
+
+    - name: add second ssh key for simone
+      authorized_key:
+        user: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+mp7cbSjVY3IyIJnMFKWSHIAjFieqeA5bXGdZbVfn ansible"
