@@ -7,3 +7,30 @@
       authorized_key:
         user: simone
         key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+mp7cbSjVY3IyIJnMFKWSHIAjFieqeA5bXGdZbVfn ansible"
+
+    - name: configure sshd config file from template
+      tags: ssh 
+      template:
+        src: "{{ssh_template_file}}"
+        dest: /etc/ssh/sshd_config
+        owner: root
+        group: root
+        mode: '0644'
+      
+    - name: create /home/app directory 
+      file:
+        path: /home/app
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: deployer le fichier test.txt depuis le template
+      template:
+        src: "{{test_file}}"
+        dest: /home/app/test.txt
+        owner: root
+        group: root
+        mode: '0644'  
+      notify: restart dummy service
+

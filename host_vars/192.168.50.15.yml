@@ -3,3 +3,6 @@ apache_service: apache2
 php_package_name: libapache2-mod-php
 mariadb_package_name: mariadb-server
 samba_package_name: samba
+ssh_users: "jay simone"
+ssh_template_file: sshd_config_ubuntu.j2
+test_file: test.txt.j2

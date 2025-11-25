@@ -1,0 +1,10 @@
+- name: handlers_sshd
+  service:
+    name: sshd
+    state: restarted
+
+- name: restart dummy service
+  debug:
+    msg: " Le fichier test.txt. a ete modifier - Handler declencher!"
+
+    
