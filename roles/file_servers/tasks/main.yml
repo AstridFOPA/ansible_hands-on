@@ -2,5 +2,5 @@
       tags: [samba]
       package:
         name:
-          - samba
+          - "{{samba_package_name}}"
         state: latest

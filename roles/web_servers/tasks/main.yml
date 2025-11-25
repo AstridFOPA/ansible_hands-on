@@ -2,8 +2,8 @@
       tags: [apache, apache2, ubuntu]
       apt:
         name:
-          - apache2
-          - libapache2-mod-php
+          - "{{apache_package_name}}"
+          - "{{php_package_name}}"
         state: latest
         update_cache: yes
       when: ansible_distribution == "Ubuntu"
@@ -12,8 +12,8 @@
       tags: [apache, centos, httpd, auto ]
       dnf:
         name:
-          - httpd
-          - php
+          - "{{apache_package_name}}"
+          - "{{php_package_name}}"
         state: latest
         update_cache: yes
       when: ansible_distribution == "CentOS"
@@ -21,7 +21,7 @@
     - name: start httpd (CentOS)
       tags: [apache, centos, httpd]
       service:
-        name: httpd
+        name: "{{apache_service}}"
         state: started
         enabled: yes
       when: ansible_distribution == "CentOS"
@@ -33,14 +33,14 @@
           regexp: '^ServerAdmin'
           line: ServerAdmin somebody@somewhere.com
       when: ansible_distribution == "CentOS"
-      register: httpd
+      register: apache
 
     - name: restart httpd (CentOS) 
       tags: [apache, centos, httpd]
       service:
-          name: httpd
+          name: "{{apache_service}}"
           state: restarted
-      when: httpd.changed
+      when: apache.changed
 
     - name: copy default html file for site
       tags: [apache, apache2, httpd]

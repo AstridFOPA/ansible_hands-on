@@ -2,7 +2,8 @@
       tags: [centos, db, mariadb]
       dnf:
         name:
-          - mariadb
+          - "{{apache_package_name}}"
+          - "{{php_package_name}}"
         state: latest
       when: ansible_distribution == "CentOS"
 
@@ -10,6 +11,6 @@
       tags: [db, mariadb, ubuntu]
       apt:
         name:
-          - mariadb-server
+          - "{{mariadb_package_name}}"
         state: latest
       when: ansible_distribution == "Ubuntu"
